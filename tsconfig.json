@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+            // то, куда производится сборка. В данном случае не так важна, т.к. собираем с помощью webpack
+        "noImplicitAny": true,
+            // Подсвечивает все места где не указан тип
+            // Однако это не означает, что теперь вовсе нельзя использовать any.
+            // Это означает лишь, что в подобных ситуация разработчик должен явно писать any,
+        "module": "ESNext",
+            // различные способы модульной сборки
+        "target": "es5",
+            // В какую спецификацию компилируем: для поддержки большинства браузеров - ES5
+        "jsx": "react-jsx",
+            // было "jsx": "react" поменяли чтобы не импортировать в каждый файл React
+        "allowJs": true,
+            // позволяет компилятору обрабатывать не только .ts файлы, но и .js
+        "moduleResolution": "node",
+            // определякт то, какие импорты будут. всего 2 свойства: "node" или "classic". в 99% используется "node"
+        // "baseUrl": ".",
+            // для абсолютного импорта.. при раскоментировании пишет что ошибка
+        "esModuleInterop": true,
+            // esModuleInterop позволяет работать с пакетами, которые используют common js как с обычными пакетами 
+            // с помощью import (require() module.export) = common js
+                // import Moment from 'moment';
+                    // без флага esModuleInterop результат undefined
+                    // c флагом результат [object Object]
+        "allowSyntheticDefaultImports": true,
+            // Если какая-либо библиотека не имеет default import, лоадеры вроде ts-loader или babel-loader автоматически создают их
+            // вместо такого импорта
+                // import * as React from 'react';
+            // можно писать такой
+                // import React from 'react';
+        "plugins": [{ "name": "typescript-plugin-css-modules" }]
+            // устранили проблему где typescript ругается на импорт из css modules (https://stackoverflow.com/questions/41336858/how-to-import-css-modules-with-typescript-react-and-webpack)
+    },
+    // добавили, т.к. того просит документация webpack для настройки webpack.config на typescript (https://webpack.js.org/configuration/configuration-languages/)
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    }
+}
