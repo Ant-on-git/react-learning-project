@@ -15,7 +15,8 @@ export default (env: buildEnv) => {
   const paths: BuildPaths = {
     entry: path.resolve(__dirname, 'src', "index.tsx"),      // стартовая точка проекта,
     build: path.resolve(__dirname, 'build'),
-    html: path.resolve(__dirname, 'public', 'index.html')
+    html: path.resolve(__dirname, 'public', 'index.html'),
+    src: path.resolve(__dirname, 'src'),  // для абсолютных импортов относительно папки src, чтоб вебпак понимал где искать
   }
   
   const mode = env.mode || 'development';

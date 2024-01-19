@@ -21,7 +21,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         module: {
           rules: buildLoaders(options),
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         devtool: options.isDev ? 'inline-source-map' : undefined,       // если режим development, то включаем сурс мапы (для корректного отображения в каком файле была ошибка)
         devServer: options.isDev ? buildDevServer(options) : undefined, // если не development то дев сервер не нужен
       }

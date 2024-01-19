@@ -1,12 +1,14 @@
 import './styles/index.scss';
 import { Route, Routes, Link } from "react-router-dom";
-import { Suspense, lazy, useContext } from 'react';
-import { useTheme } from './theme/UseTheme';
-import { classNames } from './helpers/classNames/classNames';
+import { Suspense, lazy } from 'react';
+import { useTheme } from 'app/providers/ThemeProvider/lib/UseTheme';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { AboutPage } from 'pages/AboutPage';
+import { MainPage } from 'pages/MainPage';
 
 
-export const MainPageAsync = lazy(() => import('./pages/MainPage/MainPage'));
-export const AboutPageAsync = lazy(() => import('./pages/AboutPage/AboutPage'));
+
+
 
 
 const App = () => {
@@ -22,8 +24,8 @@ const App = () => {
 
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
-                    <Route path={'/'} element={<MainPageAsync/>} />
-                    <Route path={'/about'} element={<AboutPageAsync />} />
+                    <Route path={'/'} element={<MainPage/>} />
+                    <Route path={'/about'} element={<AboutPage />} />
                 </Routes>
             </Suspense>
 

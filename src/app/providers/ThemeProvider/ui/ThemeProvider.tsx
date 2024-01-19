@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from "./ThemeContext";
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from "../lib/ThemeContext";
 import { FC, useMemo, useState } from 'react';
 
 
@@ -11,14 +11,15 @@ const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || T
 
 // препод использует реакт 17 версии и у него было "const ThemeProvider: FC = ({children}) => {" - но Тип PropsWithChildren исключен из типа props FunctionalComponent после React 18
 // Таким образом, когда вы пишете FC<Props>, вы говорите TypeScript, что ваш компонент принимает любые пропсы, которые определены в Props, а также любые дополнительные пропсы, которые могут быть определены в FC
-interface Props {
+interface PropsChildren {
     children?: React.ReactNode; // ReactNode потому что в параметы ThemeProvider будет приходить <App/>
 }
+// children это <App />
 
 
 
-// создает контекст для управления темой
-const ThemeProvider: FC<Props> = ({children}) => {
+// получаем компонент, оборачиваем его в этот провайдер и возвращаем
+const ThemeProvider: FC<PropsChildren> = ({children}) => {
     const [theme, setTheme] = useState<Theme>(defaultTheme);
 
     // Используется хук useMemo для оптимизации производительности. useMemo возвращает мемоизированное значение, которое пересчитывается только тогда, когда меняются его зависимости (в данном случае, theme). 
