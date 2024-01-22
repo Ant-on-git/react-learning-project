@@ -10,7 +10,7 @@ const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || T
 
 
 // препод использует реакт 17 версии и у него было "const ThemeProvider: FC = ({children}) => {" - но Тип PropsWithChildren исключен из типа props FunctionalComponent после React 18
-// Таким образом, когда вы пишете FC<Props>, вы говорите TypeScript, что ваш компонент принимает любые пропсы, которые определены в Props, а также любые дополнительные пропсы, которые могут быть определены в FC
+// Таким образом, когда вы пишете FC<PropsChildren>, вы говорите TypeScript, что ваш компонент принимает любые пропсы, которые определены в Props, а также любые дополнительные пропсы, которые могут быть определены в FC
 interface PropsChildren {
     children?: React.ReactNode; // ReactNode потому что в параметы ThemeProvider будет приходить <App/>
 }
