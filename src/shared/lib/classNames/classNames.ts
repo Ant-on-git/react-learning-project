@@ -15,8 +15,8 @@ export function classNames(cls: string, mods: Mods, additional: string[]): strin
         cls, 
         ...additional, 
         ...Object.entries(mods)
-            .filter(([className, value]) => Boolean(value))
-            .map(([className, value]) => className)
+            .filter(([className, value]) => Boolean(value))     // отфильтровываем названия классов со значением тру
+            .map(([className, value]) => className)             // превращаем в список классов
     ]
 
     return classes.join(' ');
