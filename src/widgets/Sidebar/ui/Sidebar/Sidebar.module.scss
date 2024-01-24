@@ -1,0 +1,23 @@
+// развернут
+.Sidebar {
+    height: calc(100vh - var(--navbar-height));
+    width: var(--sidebar-width);
+    background: var(--inverted-bg-color);
+
+    position: relative;     // относительное позиционирование чтоб правильно поставить кнопку
+    transition: width 0.3s;     // плавно (в теч. 0.3сек) изменять ширину
+}
+
+// свернут
+.collapsed {
+    width:var(--sidebar-width-collapsed);
+
+}
+
+.switchers {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

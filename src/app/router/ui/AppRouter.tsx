@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense } from 'react';
 import { routeConfig } from "shared/config/routeConfig/routeConfig";
+import { classNames } from "shared/lib/classNames/classNames";
 
 
 
@@ -10,7 +11,15 @@ const AppRouter = () => {
             
             <Routes>
                 {Object.values(routeConfig).map(({element, path}) => 
-                    <Route key={path} path={path} element={element}/>
+                    <Route 
+                        key={path} 
+                        path={path} 
+                        element={(
+                            <div className={ classNames('page-wrapper', {}, []) }>
+                                {element}
+                            </div>
+                        )}
+                    />
                 )}
             </Routes>
 
