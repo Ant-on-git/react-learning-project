@@ -4,7 +4,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from './router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-
+import { Suspense } from 'react';
 
 
 const App = () => {
@@ -13,12 +13,13 @@ const App = () => {
     return (
         <div className={ classNames('app', {}, [theme]) }>
 
-            <Navbar />
-
-            <div className={ classNames('content-page', {}, []) }>
-                <Sidebar />
-                <AppRouter />
-            </div>
+            <Suspense fallback="loadig translated page">    {/* здесь Suspense чтобы асинхронно подгружать переводы для страниц. Переводы призодят в виде json файлов чисто с тексатми (из public/locales/<language_code>/translation.json ) */}
+                <Navbar />
+                <div className={ classNames('content-page', {}, []) }>
+                    <Sidebar />
+                    <AppRouter />
+                </div>
+            </Suspense>
 
         </div>
     );
