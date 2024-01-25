@@ -57,5 +57,27 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
 
-    return [svgLoader, fileLoader, typescriptLoader, cssLoader];
+
+    // babel loader должкен идти до typescript loader т.к. иначе typescript файлы будут обрабатываться не тем обработчиком
+    const babelLoader = {
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ["@babel/preset-env"],
+                plugins: [
+                    // babel-plugin-i18next-extract:
+                    ["i18next-extract", {
+                            locales: ["ru", "en"],      // языки, с которыми раюотаем
+                            keyAsDefaultValue: true,    // ключ устанавливается в файлах с переводом в качестве значения (по умолчанию)
+                        },
+                    ],
+                    // […] your other plugins […]
+                ],
+            },
+        },
+    };
+
+    return [svgLoader, fileLoader, babelLoader, typescriptLoader, cssLoader];
 }
