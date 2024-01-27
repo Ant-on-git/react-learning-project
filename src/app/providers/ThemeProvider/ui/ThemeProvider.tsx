@@ -1,5 +1,5 @@
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from "../lib/ThemeContext";
-import { FC, useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
 
 
 
@@ -19,16 +19,16 @@ interface PropsChildren {
 
 
 // получаем компонент, оборачиваем его в этот провайдер и возвращаем
-const ThemeProvider: FC<PropsChildren> = ({children}) => {
+const ThemeProvider: FC<PropsChildren> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>(defaultTheme);
 
-    // Используется хук useMemo для оптимизации производительности. useMemo возвращает мемоизированное значение, которое пересчитывается только тогда, когда меняются его зависимости (в данном случае, theme). 
+    // Используется хук useMemo для оптимизации производительности. useMemo возвращает мемоизированное значение, которое пересчитывается только тогда, когда меняются его зависимости (в данном случае, theme).
     // Это означает, что объект { theme: theme, setTheme: setTheme } будет создан заново только тогда, когда theme изменится. А если не изменилось, возвращается старое значение объекта
     // иначе , если прописать прям в ThemeContext.Provider value = {{theme: theme, setTheme: setTheme}}, то этот объект (внутри value) будет создаваться каждый раз при рендере компонента
     const defaultProps = useMemo(() => ({
-        theme: theme,
-        setTheme: setTheme
-    }), [theme])
+        theme,
+        setTheme,
+    }), [theme]);
 
     return (
         <ThemeContext.Provider value={defaultProps}>

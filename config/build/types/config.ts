@@ -7,7 +7,7 @@ export interface BuildPaths {
     build: string;
     html: string;
     src: string;
-} 
+}
 
 // описываем тип опций сборки
 export interface BuildOptions {

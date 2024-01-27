@@ -1,21 +1,21 @@
 import './styles/index.scss';
 import { useTheme } from 'app/providers/ThemeProvider/lib/UseTheme';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppRouter } from './router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
+import { AppRouter } from './router';
 
 
-const App = () => {
-    const { theme } = useTheme()
+function App() {
+    const { theme } = useTheme();
 
     return (
-        <div className={ classNames('app', {}, [theme]) }>
+        <div className={classNames('app', {}, [theme])}>
 
             <Suspense fallback="loadig translated page">    {/* здесь Suspense чтобы асинхронно подгружать переводы для страниц. Переводы призодят в виде json файлов чисто с тексатми (из public/locales/<language_code>/translation.json ) */}
                 <Navbar />
-                <div className={ classNames('content-page', {}, []) }>
+                <div className={classNames('content-page', {}, [])}>
                     <Sidebar />
                     <AppRouter />
                 </div>
@@ -23,6 +23,6 @@ const App = () => {
 
         </div>
     );
-};
+}
 
 export default App;

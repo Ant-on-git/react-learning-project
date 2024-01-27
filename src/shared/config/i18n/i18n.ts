@@ -1,8 +1,8 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-import Backend from "i18next-http-backend";
-import LanguageDetector from "i18next-browser-languagedetector";
+import Backend from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
 // не хотите использовать это?
 // ознакомьтесь с кратким руководством по началу работы для передачи в lng и переводов в init
 
@@ -15,17 +15,17 @@ i18n.use(Backend)
     .use(initReactI18next) // pass the i18n instance to react-i18next.
     .init({
         // init i18next. for all options read: https://www.i18next.com/overview/configuration-options
-        fallbackLng: "ru", // язык по умолчанию
+        fallbackLng: 'ru', // язык по умолчанию
         debug: __IS_DEV__, // сообщает в консоль подгрузку переводов, отсутствующие ключи и тд. Если режим разработчика, то вкл, иначе откл. __IS_DEV__ - глобальная переменная вебпака, задана в плагинах
 
-        load: "languageOnly", // чтоб загружался только выбранный язык. но работает через раз
+        load: 'languageOnly', // чтоб загружался только выбранный язык. но работает через раз
 
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
-        
+
         backend: {
-            loadPath: "/locales/{{lng}}/{{ns}}.json",
+            loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
     });
 
