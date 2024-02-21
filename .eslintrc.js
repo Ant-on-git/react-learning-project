@@ -2,6 +2,7 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true,
     },
     extends: [
         'plugin:react/recommended',
@@ -45,6 +46,9 @@ module.exports = {
         'max-len': [1, { comments: 500, code: 500 }],           // макс длинна строки
         'object-curly-newline': [0, 'never'],                   // чтоб не требовал переноса строк у открывающих и закрывающих скобок
         'react/jsx-no-bind': [0],                               // чтоб можно было использовать функции, объявленные через function declaration в пропсах
+        quotes: [0],                                            // кавычки
+        'space-in-parens': [0],                                 // expect( classNames('someClass') ) разрешить пробелы внутри expect()
+        'object-curly-spacing': [0],
     },
     globals: {
         __IS_DEV__: true,                                       // объявили глобальную переменную из вебпака

@@ -18,7 +18,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 
 
 // объявляем сами роуты (маршрут, компонент, кот. для них надо отрисовать)
-export const routeConfig: Record<AppRoutes, RouteProps> = {   // RouteProps - тип, кот. используется для передачи пропсов в компонент react router dom ((  <Route path={'/about'} element={<AboutPage />}/>  пропсы это path={'/about'} element={<AboutPage />}))
+export const routeConfig: Record<AppRoutes, RouteProps> = {   // RouteProps - тип, кот. используется для передачи пропсов в компонент react router dom ((  <Route path={'/about'} element={<AboutPage />}/>  пропсы это path={'/about'} element={<AboutPage />}  ))
     [AppRoutes.MAIN]: { path: RoutePath.main, element: <MainPage /> },
     [AppRoutes.ABOUT]: { path: RoutePath.about, element: <AboutPage /> },
 };
