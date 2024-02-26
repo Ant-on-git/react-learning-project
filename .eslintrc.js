@@ -49,6 +49,9 @@ module.exports = {
         quotes: [0],                                            // кавычки
         'space-in-parens': [0],                                 // expect( classNames('someClass') ) разрешить пробелы внутри expect()
         'object-curly-spacing': [0],
+        'arrow-body-style': [0],
+        'react/jsx-curly-spacing': [0],
+        'react/jsx-tag-spacing': [0],
     },
     globals: {
         __IS_DEV__: true,                                       // объявили глобальную переменную из вебпака
