@@ -52,6 +52,8 @@ module.exports = {
         'arrow-body-style': [0],
         'react/jsx-curly-spacing': [0],
         'react/jsx-tag-spacing': [0],
+        'react/button-has-type': [0],
+        'no-restricted-globals': [0],
     },
     globals: {
         __IS_DEV__: true,                                       // объявили глобальную переменную из вебпака
