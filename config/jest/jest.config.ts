@@ -4,6 +4,7 @@
  */
 
 import type { Config } from 'jest';
+import path from 'path';
 
 const config: Config = {
     // Automatically clear mock calls, instances, contexts and results before every test
@@ -16,7 +17,10 @@ const config: Config = {
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 
     // An array of directory names to be searched recursively up from the requiring module's location
-    moduleDirectories: ['node_modules'],
+    moduleDirectories: ['node_modules', 'src'],
+
+    // доюавлено, чтоб jest понимал абсолютные импорты. У меня работает и без этой строчки, но у препода нет. пусть будет для примера
+    modulePaths: ["<rootDir>/src"],
 
     // An array of file extensions your modules use
     moduleFileExtensions: [
@@ -33,6 +37,9 @@ const config: Config = {
     // The root directory that Jest should scan for tests and modules within
     rootDir: '../../',
 
+    // добавлено по требованию документации https://github.com/testing-library/jest-dom#usage
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+
     // The glob patterns Jest uses to detect test files
     testMatch: [
         // при установке jest было:
@@ -41,6 +48,12 @@ const config: Config = {
         // этого должно хватать для поиска тестов, но препод заметил разницу при работе на винде и на маке. потому
         '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',          // <rootDir> - адрес корневой папки из rootDir
     ],
+
+    // добавлено, чтоб jest понимал css modules (https://jestjs.io/docs/webpack#mocking-css-modules)
+    moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    },
 
     // All imported modules in your tests should be mocked automatically
     // automock: false,

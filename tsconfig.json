@@ -39,7 +39,9 @@
     // добавили, т.к. того просит документация webpack для настройки webpack.config на typescript (https://webpack.js.org/configuration/configuration-languages/)
     "ts-node": {
         "compilerOptions": {
-            "module": "CommonJS"
+            "module": "CommonJS",
         }
-    }
+    },
+    // добавлено по требованию документации https://github.com/testing-library/jest-dom#usage
+    "include": ["./config/jest/setupTests.ts", "**/*.tsx"],
 }
