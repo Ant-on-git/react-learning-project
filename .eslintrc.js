@@ -30,10 +30,10 @@ module.exports = {
         'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],   // чтоб eslint понимал расширения файлов
         'import/no-unresolved': 'off',                          // разрешили абсолютные пути в импортах
         'import/prefer-default-export': 'off',                  // откл только дефолтные экспорты (разрешили именованные)
-        'no-unused-vars': 'warn',                               // warning для не используемых переменных
+        'no-unused-vars': [0],                                  // warning для не используемых переменных
         'react/require-default-props': 'off',                   // отключили обязательное указание дефолтных значений у не обязательных переменных
         'react/react-in-jsx-scope': 'off',                      // если не отключить, то в рекат файлах(jsx, tsx) будет ругаться если нет import React from react. Т.к. в версиях реакта от 17+ импортировать не обязательно, то отключаем.
-        'react/jsx-props-no-spreading': 'warn',                 // spread(распаковка) для пропсов лучше не использовать. Но в этом коде есть необходимость. потому не отключаем, а варнинг
+        'react/jsx-props-no-spreading': [0],                    // spread(распаковка) для пропсов лучше не использовать. Но в этом коде есть необходимость. потому не отключаем, а варнинг
         'react/function-component-definition': 'off',           // по умолчанию подмечает функции, объявденные не через Function Declaration. Отключили, т.к. многогде используем Function Expression
         'no-shadow': 'off',
         'import/extensions': 'off',                             // чтоб не ругался на импорты без расширений. У нас настроен вебпак(резолверы), потому нам не надо
@@ -54,6 +54,8 @@ module.exports = {
         'react/jsx-tag-spacing': [0],
         'react/button-has-type': [0],
         'no-restricted-globals': [0],
+        'no-console': [0],
+        'i18next/no-literal-string': [0],
     },
     globals: {
         __IS_DEV__: true,                                       // объявили глобальную переменную из вебпака

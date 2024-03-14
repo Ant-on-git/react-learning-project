@@ -43,5 +43,9 @@
         }
     },
     // добавлено по требованию документации https://github.com/testing-library/jest-dom#usage
-    "include": ["./config/jest/setupTests.ts", "**/*.tsx"],
+    "include": [
+        "./config/jest/setupTests.ts",      // указываем на файл конфиг для тестов
+         "./src/**/*.tsx",                  // фиксим ошибку Cannot find module './Sidebar.module.scss' or its corresponding type declarations.ts(2307)» в импортах после добавления react testing library
+         "./src/**/*.ts",                   // --//--
+        ],
 }

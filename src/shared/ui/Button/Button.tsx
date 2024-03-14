@@ -5,7 +5,8 @@ import cls from './Button.module.scss';
 
 
 export enum ThemeButton {
-    CLEAR = 'clear',    // кнопка без всего, чисто текст
+    CLEAR = 'clear',        // кнопка без всего, чисто текст
+    OUTLINE = 'outline',    // кнопка с рамкой, но без заднего фона
 }
 
 
