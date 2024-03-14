@@ -4,24 +4,24 @@
     aspect-ratio: 5;
     display: grid;
 
-    --_g: no-repeat radial-gradient(farthest-side, var(--inverted-bg-color) 94%, var(--inverted-bg-color));
+    --g: no-repeat radial-gradient(farthest-side, var(--inverted-bg-color) 94%, var(--inverted-bg-color));
 }
 
-.loader:before,
-.loader:after {
+.loader::before,
+.loader::after {
     content: "";
     grid-area: 1/1;
     background:
-        var(--_g) left,
-        var(--_g) right;
+        var(--g) left,
+        var(--g) right;
     background-size: 20% 100%;
     animation: l32 1s infinite;
 }
 
-.loader:after {
+.loader::after {
     background:
-        var(--_g) calc(1 * 100% / 3),
-        var(--_g) calc(2 * 100% / 3);
+        var(--g) calc(1 * 100% / 3),
+        var(--g) calc(2 * 100% / 3);
     background-size: 20% 100%;
     animation-direction: reverse;
 }
