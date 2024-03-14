@@ -6,8 +6,9 @@ import { BuildOptions } from './types/config';
 
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
-    // возвращаем нвбор плагинов
-    return [
+    // возвращаем набор плагинов
+
+    const plugins = [
         new HTMLWebpackPlugin({
             template: paths.html,
         }),
@@ -19,8 +20,17 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         new webpack.DefinePlugin({    // для создания глобальных переменных, к которым можно получить доступ в любом месте приложения
             __IS_DEV__: JSON.stringify(isDev),
         }),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,            // чтоб не открывалсяя каждый раз при запуске приложения. (ссылка юудет в терминале)
-        }),
+
     ];
+
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false,            // чтоб не открывался каждый раз при запуске приложения. (ссылка юудет в терминале)
+            }),
+        );
+    }
+
+    return plugins;
 }
