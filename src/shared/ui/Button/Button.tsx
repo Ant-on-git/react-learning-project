@@ -4,9 +4,17 @@ import cls from './Button.module.scss';
 
 
 
-export enum ThemeButton {
+export enum ButtonTheme {
     CLEAR = 'clear',        // кнопка без всего, чисто текст
     OUTLINE = 'outline',    // кнопка с рамкой, но без заднего фона
+    BACGROUND = 'background',    // цвет фона такой же как у приложения
+    BACGROUND_INVERTED = 'backgroundInverted',
+}
+
+export enum ButtonSize {
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl',
 }
 
 
@@ -14,18 +22,19 @@ export enum ThemeButton {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLElement> {
     className?: string;
     children?: React.ReactNode;
-    theme?: ThemeButton;
+    theme?: ButtonTheme;
+    isSquare?: boolean;       // отвечает за то чтоб кнопка была квадратной
+    size?: ButtonSize
 }
 
 
 export const Button: FC<ButtonProps> = (props) => {
-    const { className, children, theme, ...otherProps } = props;
+    const { className, children, theme, isSquare, size, ...otherProps } = props;
 
     return (
-        <button
-            type="button"
-            className={classNames(cls.Button, {}, [className, cls[theme]])}
-            {...otherProps}
+        <button type="button"
+                className={classNames(cls.Button, { [cls.square]: isSquare }, [className, cls[theme], cls[size]])}
+                {...otherProps}
         >
             {children}
         </button>

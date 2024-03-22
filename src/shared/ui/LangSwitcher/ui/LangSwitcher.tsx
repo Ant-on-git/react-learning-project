@@ -1,13 +1,16 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 
-interface LangSwitcherProps {className?: string}
+interface LangSwitcherProps {
+    className?: string,
+    short?: boolean,        // для укороченных слов. добавили когда делали чтоб переключатель языков не вылезал за сайтбар
+}
 
 
 
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
     const { t, i18n } = useTranslation();
 
     async function toddle() {
@@ -15,12 +18,11 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
     }
 
     return (
-        <Button
-            theme={ThemeButton.CLEAR}
-            className={classNames('', {}, [className])}
-            onClick={toddle}
+        <Button theme={ButtonTheme.CLEAR}
+                className={classNames('', {}, [className])}
+                onClick={toddle}
         >
-            {t('Язык')}
+            {t(short ? 'сокращенный язык' : 'Язык')}
         </Button>
     );
 };

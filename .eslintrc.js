@@ -24,9 +24,9 @@ module.exports = {
     ],
     rules: {
         // 0 = "off", 1 = "warning", 2 = "error"
-        'react/jsx-indent': [2, 4],                             // отступ 4 пробела для jsx файлов
-        'react/jsx-indent-props': [2, 4],                       // отступ 4 пробела для пропсов
-        indent: [2, 4],                                         // отступ 4 пробела для остальных файлов
+        'react/jsx-indent': [0, 4],                             // отступ 4 пробела для jsx файлов
+        'react/jsx-indent-props': [0, 4],                       // отступ 4 пробела для пропсов
+        indent: [0, 4],                                         // отступ 4 пробела для остальных файлов
         'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],   // чтоб eslint понимал расширения файлов
         'import/no-unresolved': 'off',                          // разрешили абсолютные пути в импортах
         'import/prefer-default-export': 'off',                  // откл только дефолтные экспорты (разрешили именованные)
@@ -56,6 +56,8 @@ module.exports = {
         'no-restricted-globals': [0],
         'no-console': [0],
         'i18next/no-literal-string': [0],
+        'react/jsx-first-prop-new-line': [0],
+        'react/jsx-boolean-value': [0],
     },
     globals: {
         __IS_DEV__: true,                                       // объявили глобальную переменную из вебпака
